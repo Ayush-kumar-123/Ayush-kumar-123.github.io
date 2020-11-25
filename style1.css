@@ -1,0 +1,29 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 800px;
+    position: absolute;
+    left: 200px;
+    top: 20%;
+}
+h3{
+    background-color: grey;
+    text-align: center;
+    position: relative;
+    width: 1300px;
+   border: 8px solid rgba(117, 201, 152, 0.685);
+   padding: 6px 0px;
+   display: inline-block;
+   border-radius: 40px;
+   max-width: 100%;
+   text-decoration: underline;
+}
+.main{
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 0 40px;
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(240, 86, 86);
+}
