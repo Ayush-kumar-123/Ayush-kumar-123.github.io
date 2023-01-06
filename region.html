@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <script>
+
+            function moni() {
+                const ayush = [];
+                fetch('https://api.rootnet.in/covid19-in/stats/latest')
+                    .then(res => res.json())
+                    .then((out) => {
+                        console.log(ayush);
+                        for (let i = 0; i < out['data']['regional'].length; i++) {
+                            ayush.push(out['data']['regional'][i]["loc"]);
+                            ayush.push(out['data']['regional'][i]["confirmedCasesIndian"]);
+                            ayush.push(out['data']['regional'][i]["deaths"]);
+                            ayush.push(out['data']['regional'][i]["totalConfirmed"]);
+                        }
+                        console.log(ayush);
+                        let txt = "";
+                        for (let i = 0; i < ayush.length; i = i + 4) {
+                            txt += "<div class=\"card-columns\"><div class=\"card bg-primary\"><div class=\"card-body text-center\"><p class=\"card-text\"><h2>Location</h2><h1>" + ayush[i] + "</h1></p></div></div><div class=\"card bg - warning\"><div class=\"card - body text - center\"><p class=\"card - text\"><h2>confirmedCasesIndian</h2><h1>" + ayush[i + 1] + "</h1></p></div></div><div class=\"card bg-success\"><div class=\"card-body text-center\"><p class=\"card-text\"><h2>deaths</h2><h1>" + ayush[i + 2] + "</h1></p></div></div><div class=\"card bg-danger\"><div class=\"card-body text-center\"><p class=\"card-text\"><h2>totalConfirmed</h2><h1>" + ayush[i + 3] + "</h1></p></div></div> </div>"
+                        }
+                        console.log(txt);
+                        document.getElementById("demo").innerHTML = txt;
+                    }).catch(err => console.error(err));
+            }
+        
+        </script>
+        
+        <button onclick="moni()">India</button>
+        <button>US</button>
+        <button>China</button>
+        <p id="demo"></p>
+    </body>
+
+
+</html>
